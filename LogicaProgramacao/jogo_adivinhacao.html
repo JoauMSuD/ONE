@@ -1,0 +1,24 @@
+<meta charset="utf-8">
+
+<input/>
+<button>Click aqui</button>
+
+<script>
+
+	var input = document.querySelector("input");
+	var segredo = Math.round(Math.random() * 10);
+	input.focus();
+	function adivinha(){
+
+		if(input.value == segredo){
+			alert("Você Acertou!");
+		}else{
+			alert("Você Errou, tente outra vez!")
+		}
+		input.value = "";
+		input.focus();
+	}
+	var button = document.querySelector("button");
+	button.onclick = adivinha;
+
+</script>
