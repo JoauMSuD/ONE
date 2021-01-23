@@ -8,11 +8,11 @@
 
         pincel.fillStyle=cor;
         pincel.fillRect(x,y, largura, altura);
-        pincel.strokeStyle= 'black';
+        pincel.strokeStyle='black';
         pincel.strokeRect(x,y, largura, altura);
     }
 
-    function desenhaTexto(x, y, texto) {
+    function desenhaTexto(x , y, texto) {
         var tela = document.querySelector('canvas');
         var pincel = tela.getContext('2d');
 
@@ -20,28 +20,24 @@
         pincel.fillStyle='black';
         pincel.fillText(texto, x, y);    
     }
-    desenhaTexto(30, 30, 'Pesquisa de uso dos navegadores mais utilizados')
-    desenhaTexto(100, 180, '2015' )
-    desenhaTexto(200, 180, '2016')
-    
-    desenhaRetangulo(100, 50, 50,50, 'green');
-    desenhaRetangulo(100, 100, 50,25, 'darkred');
-    desenhaRetangulo(100, 125, 50,20, 'blue');
-    desenhaRetangulo(100, 145, 50,5, 'purple');
 
-    desenhaRetangulo(200, 50, 50,65, 'green');
-    desenhaRetangulo(200, 115, 50,20, 'darkred');
-    desenhaRetangulo(200, 135, 50,13, 'blue');
-    desenhaRetangulo(200, 148, 50,2, 'purple');
+        var cores = ['blue','green','yellow', 'red'];
+        var serie2015 = [50,25,20,5];
+        var serie2016 = [65,20,13,2];
 
-    desenhaRetangulo(100, 200, 20,20, 'green');
-    desenhaTexto(130, 215, '- Google')
-    desenhaRetangulo(100, 230, 20,20, 'darkred');
-    desenhaTexto(130, 245, '- Firefox')
-    desenhaRetangulo(100, 260, 20,20, 'blue');
-    desenhaTexto(130, 275, '- Safari')
-    desenhaRetangulo(100, 290, 20,20, 'purple');
-    desenhaTexto(130, 305, '- outros')
+    function desenhaBarra(x, y, serie, cores, texto) {
 
+        desenhaTexto(x, y - 10, texto);
+
+        var somaAltura = 0;
+        for (var i = 0; i < serie.length; i++) {
+            var altura = serie[i];
+            desenhaRetangulo(x, y + somaAltura, 50, altura, cores[i]);
+            somaAltura = somaAltura + altura;
+        }
+    }
+
+    desenhaBarra(50, 50, serie2015, cores, '2015');
+    desenhaBarra(150, 50, serie2016, cores, '2016');
 
 </script>
